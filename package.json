@@ -1,0 +1,17 @@
+{
+  "name": "pwa-demo",
+  "scripts": {
+    "sw": "sw-precache --config=tools/precache.js --verbose",
+    "deploy": "gh-pages -d ."
+  },
+  "version": "1.0.0",
+  "description": "",
+  "main": "service-worker.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "gh-pages": "^1.0.0",
+    "sw-precache": "^5.2.0"
+  }
+}

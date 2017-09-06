@@ -1,0 +1,15 @@
+{
+  "short_name": "Git Trends",
+  "name": "Git Javascript Trends",
+  "icons": [
+    {
+      "src":"images/gt-icon192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "/gittrends?utm_source=homescreen",
+  "background_color": "#009688",
+  "theme_color": "#009688",
+  "display": "standalone"
+}
