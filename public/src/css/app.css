@@ -5,3 +5,8 @@
 .drawer-option {
   padding: 16px;
 }
+
+/*notifications buttons*/
+.enable-notifications {
+  display: none; /*default, do not display*/
+}

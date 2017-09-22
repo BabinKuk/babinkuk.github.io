@@ -2,13 +2,39 @@
   z-index: 1001;
   position: fixed;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 56px);
   overflow-y: scroll;
   bottom: 0;
   top: 56px;
   background: white;
   text-align: center;
+  /*display: none;*/
+  /*animations*/
+  transform: translateY(100vh);
+  transition: transform 0.3s;
+}
+
+/*video and canvas*/
+#create-post video, #create-post canvas {
+  width: 512px;
+  max-width: 100%;
   display: none;
+  margin: auto;
+}
+
+/*create post and pick image, location elements*/
+#create-post #pick-image, #create-post #location-loader {
+  display: none; /*not visible by default*/
+}
+
+/*capture photo*/
+#create-post #capture-btn {
+  margin: 10px auto;
+}
+
+/*spinner*/
+.mdl-spinner {
+  margin: auto; /*center*/
 }
 
 .main-image {
@@ -28,4 +54,37 @@
 .input-section {
   display: block;
   margin: 10px auto;
+}
+
+.shared-moment-card.mdl-card {
+  margin: 10px auto;
+  width: 270px; /*default*/
+}
+
+@media(min-width: 600px) {
+  .shared-moment-card.mdl-card {
+    width: 400px;
+  }
+}
+
+@media(min-width: 1000px) {
+  .shared-moment-card.mdl-card {
+    width: 45%;
+  }
+}
+
+.shared-moment-card .mdl-card__title {
+  height: 120px;
+}
+
+@media(min-width: 700px) {
+  .shared-moment-card .mdl-card__title {
+    height: 160px;
+  }
+}
+
+@media(min-width: 1000px) {
+  .shared-moment-card .mdl-card__title {
+    height: 200px;
+  }
 }

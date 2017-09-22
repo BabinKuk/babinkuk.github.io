@@ -14,6 +14,23 @@
   <link rel="stylesheet" href="/src/css/feed.css">
   <!--Manifest-->
   <link rel="manifest" href="/manifest.json">
+  <!--Safari pwa properties-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="PWAGram">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-57x57.png" sizes="57x57">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-60x60.png" sizes="60x60">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-72x72.png" sizes="72x72">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-76x76.png" sizes="76x76">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-114x114.png" sizes="114x114">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-120x120.png" sizes="120x120">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-144x144.png" sizes="144x144">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-152x152.png" sizes="152x152">
+  <link rel="apple-touch-icon" href="/src/images/icons/apple-icon-180x180.png" sizes="180x180">
+  <!--IE pwa properties-->
+  <meta name="msapplication-TileImage" content="/src/images/icons/app-icon-144x144.png">
+  <meta name="msapplication-TileColor" content="#fff">
+  <meta name="theme-color" content="#3f51b5">
 </head>
 <body>
 
@@ -51,6 +68,17 @@
     </div>
     <main class="mdl-layout__content mat-typography">
       <div id="create-post">
+          <!--video and canvas are used
+            so that the user can extract the image from the video-->
+          <video id="player" autoplay></video>
+          <canvas id="canvas" width="320px" height="240px"></canvas>
+          <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored" id="capture-btn">Capture
+          </button>
+          <!--for devices without camera or browsers that dont support using camera-->
+          <div id="pick-image">
+            <h6>Pick an Image instead</h6>
+            <input type="file" accept="image/*" id="image-picker">
+          </div>
         <form>
           <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
             <input class="mdl-textfield__input" type="text" id="title">
@@ -59,6 +87,13 @@
           <div class="input-section mdl-textfield mdl-js-textfield mdl-textfield--floating-label" id="manual-location">
             <input class="mdl-textfield__input" type="text" id="location">
             <label class="mdl-textfield__label" for="location" name="location">Location</label>
+          </div>
+          <!--button/spinner to get location-->
+          <div class="input-section">
+            <button class="mdl-button mdl-js-button mdl-button mdl-button--colored" type="button" id="location-btn">
+              Get Location
+            </button>
+            <div class="mdl-spinner mdl-js-spinner is-active" id="location-loader"></div>
           </div>
           <br>
           <div>
@@ -74,7 +109,11 @@
           </div>
         </form>
       </div>
+      <!--use srcset attribute to use images in a responsive way-->
       <img src="/src/images/main-image.jpg"
+           srcset="/src/images/main-image-lg.jpg 1200w,
+                   /src/images/main-image.jpg 900w, 
+                   /src/images/main-image-sm.jpg 480w"
            alt="Explore the City"
            class="main-image">
       <div class="page-content">
@@ -95,6 +134,11 @@
   </div>
 </div>
 <script defer src="/src/js/material.min.js"></script>
+<!--polyfils for older browsers-->
+<script src="/src/js/promise.js"></script>
+<script src="/src/js/fetch.js"></script>
+<script src="/src/js/idb.js"></script>
+<script src="/src/js/utility.js"></script>
 <script src="/src/js/app.js"></script>
 <script src="/src/js/feed.js"></script>
 </body>
